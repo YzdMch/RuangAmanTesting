@@ -23,21 +23,21 @@ class form_data_user : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val etNama     = view.findViewById<TextInputEditText>(R.id.etNama)
-        val etEmail    = view.findViewById<TextInputEditText>(R.id.etEmail)
+        val etNik      = view.findViewById<TextInputEditText>(R.id.etNik)
         val etTelepon  = view.findViewById<TextInputEditText>(R.id.etTelepon)
         val btnSimpan  = view.findViewById<MaterialButton>(R.id.btnSimpan)
 
         // Tombol Simpan Data → Home Page
         btnSimpan.setOnClickListener {
             val nama    = etNama.text.toString().trim()
-            val email   = etEmail.text.toString().trim()
+            val nik      = etNik.text.toString().trim()
             val telepon = etTelepon.text.toString().trim()
 
             if (nama.isEmpty()) {
                 etNama.error = "Nama tidak boleh kosong"; return@setOnClickListener
             }
-            if (email.isEmpty()) {
-                etEmail.error = "Email tidak boleh kosong"; return@setOnClickListener
+            if (nik.length != 16) {
+                etNik.error = "NIK harus 16 digit"; return@setOnClickListener
             }
             if (telepon.isEmpty()) {
                 etTelepon.error = "Nomor WhatsApp tidak boleh kosong"; return@setOnClickListener

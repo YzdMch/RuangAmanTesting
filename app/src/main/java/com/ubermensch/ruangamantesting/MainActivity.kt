@@ -10,8 +10,13 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // NavController tidak perlu di-setup dengan ActionBar karena tema menggunakan NoActionBar.
-        // Ini mencegah crash saat aplikasi pertama kali dibuka.
+//        // Menyembunyikan ActionBar bawaan melalui kode
+        supportActionBar?.hide()
+
+        // Setup NavController tetap diperlukan untuk navigasi antar fragment
+        val navHostFragment = supportFragmentManager
+            .findFragmentById(R.id.nav_host_fragment) as? NavHostFragment
+        val navController = navHostFragment?.navController
     }
 
     override fun onSupportNavigateUp(): Boolean {
