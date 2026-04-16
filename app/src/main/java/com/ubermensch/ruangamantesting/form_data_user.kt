@@ -1,59 +1,51 @@
 package com.ubermensch.ruangamantesting
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+import com.google.android.material.button.MaterialButton
+import com.google.android.material.textfield.TextInputEditText
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [form_data_user.newInstance] factory method to
- * create an instance of this fragment.
- */
 class form_data_user : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_form_data_user, container, false)
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment form_data_user.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            form_data_user().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val etNama     = view.findViewById<TextInputEditText>(R.id.etNama)
+        val etEmail    = view.findViewById<TextInputEditText>(R.id.etEmail)
+        val etTelepon  = view.findViewById<TextInputEditText>(R.id.etTelepon)
+        val btnSimpan  = view.findViewById<MaterialButton>(R.id.btnSimpan)
+
+        // Tombol Simpan Data → Home Page
+        btnSimpan.setOnClickListener {
+            val nama    = etNama.text.toString().trim()
+            val email   = etEmail.text.toString().trim()
+            val telepon = etTelepon.text.toString().trim()
+
+            if (nama.isEmpty()) {
+                etNama.error = "Nama tidak boleh kosong"; return@setOnClickListener
             }
+            if (email.isEmpty()) {
+                etEmail.error = "Email tidak boleh kosong"; return@setOnClickListener
+            }
+            if (telepon.isEmpty()) {
+                etTelepon.error = "Nomor WhatsApp tidak boleh kosong"; return@setOnClickListener
+            }
+
+            // TODO: Simpan data user ke backend/lokal di sini
+            Toast.makeText(requireContext(), "Data berhasil disimpan!", Toast.LENGTH_SHORT).show()
+            findNavController().navigate(R.id.action_form_data_user_to_home_page)
+        }
     }
 }

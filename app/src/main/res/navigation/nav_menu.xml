@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_menu"
+    app:startDestination="@id/login">
+    <fragment
+        android:id="@+id/login"
+        android:name="com.ubermensch.ruangamantesting.login"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_login_to_home_page"
+            app:destination="@id/home_page" />
+        <action
+            android:id="@+id/action_login_to_register"
+            app:destination="@id/register" />
+    </fragment>
+    <fragment
+        android:id="@+id/register"
+        android:name="com.ubermensch.ruangamantesting.register"
+        android:label="fragment_register"
+        tools:layout="@layout/fragment_register" >
+        <action
+            android:id="@+id/action_register_to_form_data_user"
+            app:destination="@id/form_data_user" />
+    </fragment>
+    <fragment
+        android:id="@+id/home_page"
+        android:name="com.ubermensch.ruangamantesting.home_page"
+        android:label="fragment_home_page"
+        tools:layout="@layout/fragment_home_page" >
+        <action
+            android:id="@+id/action_home_page_to_form_pelaporan"
+            app:destination="@id/form_pelaporan" />
+        <action
+            android:id="@+id/action_home_page_to_education_blog"
+            app:destination="@id/education_blog" />
+        <action
+            android:id="@+id/action_home_page_to_profil_pengguna"
+            app:destination="@id/profil_pengguna" />
+        <action
+            android:id="@+id/action_home_page_to_education_blog_detail"
+            app:destination="@id/education_blog_detail" />
+    </fragment>
+    <fragment
+        android:id="@+id/education_blog"
+        android:name="com.ubermensch.ruangamantesting.education_blog"
+        android:label="fragment_education_blog"
+        tools:layout="@layout/fragment_education_blog" >
+        <action
+            android:id="@+id/action_education_blog_to_education_blog_detail"
+            app:destination="@id/education_blog_detail" />
+    </fragment>
+    <fragment
+        android:id="@+id/form_pelaporan"
+        android:name="com.ubermensch.ruangamantesting.form_pelaporan"
+        android:label="fragment_form_pelaporan"
+        tools:layout="@layout/fragment_form_pelaporan" />
+    <fragment
+        android:id="@+id/form_data_user"
+        android:name="com.ubermensch.ruangamantesting.form_data_user"
+        android:label="form_data_user" >
+        <action
+            android:id="@+id/action_form_data_user_to_home_page"
+            app:destination="@id/home_page" />
+    </fragment>
+    <fragment
+        android:id="@+id/profil_pengguna"
+        android:name="com.ubermensch.ruangamantesting.profil_pengguna"
+        android:label="profil_pengguna" />
+    <fragment
+        android:id="@+id/education_blog_detail"
+        android:name="com.ubermensch.ruangamantesting.education_blog_detail"
+        android:label="education_blog_detail" />
+</navigation>
